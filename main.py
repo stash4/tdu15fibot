@@ -34,6 +34,21 @@ conn = psycopg2.connect(
 
 cur = conn.cursor()
 
+
+def tweet(t):
+    twitter = OAuth1Session(
+        os.environ['CONSUMER_KEY'],
+        os.environ['CONSUMER_SECRET'],
+        os.environ['ACCESS_TOKEN'],
+        os.environ['ACCESS_TOKEN_SECRET'])
+
+    params = {'status': t}
+    req = twitter.post(
+        'https://api.twitter.com/1.1/statuses/update.json',
+        params=params)
+    return req
+
+
 for i in range(0, len(table), 3):
     prof = table[i].text
     cap = table[i + 1].text
@@ -52,17 +67,3 @@ for i in range(0, len(table), 3):
             (int(curt), prof,))
         tw = prof + '研の希望者が減りました．\n' + '現在 ' + curt + '名 / ' + cap + '名'
         tweet(tw)
-
-
-def tweet(t):
-    twitter = OAuth1Session(
-        os.environ['CONSUMER_KEY'],
-        os.environ['CONSUMER_SECRET'],
-        os.environ['ACCESS_TOKEN'],
-        os.environ['ACCESS_TOKEN_SECRET'])
-
-    params = {'status': t}
-    req = twitter.post(
-        'https://api.twitter.com/1.1/statuses/update.json',
-        params=params)
-    return req
