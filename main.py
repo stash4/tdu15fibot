@@ -54,6 +54,7 @@ for i in range(0, len(table), 3):
     prof = table[i].text
     cap = table[i + 1].text
     curt = table[i + 2].text
+    print(prof, curt)
     cur.execute('SELECT curt FROM remain WHERE prof=%s;', (prof,))
     c = cur.fetchone()[0]
     if int(curt) > c:
@@ -61,12 +62,14 @@ for i in range(0, len(table), 3):
             'UPDATE remain SET curt=%s WHERE prof=%s;',
             (int(curt), prof,))
         tw = prof + '研の希望者が増えました．\n' + '現在 ' + curt + '名 / ' + cap + '名'
+        print(tw)
         tweet(twitter, tw)
     elif int(curt) < c:
         cur.execute(
             'UPDATE remain SET curt=%s WHERE prof=%s;',
             (int(curt), prof,))
         tw = prof + '研の希望者が減りました．\n' + '現在 ' + curt + '名 / ' + cap + '名'
+        print(tw)
         tweet(twitter, tw)
     conn.commit()
     time.sleep(15)
