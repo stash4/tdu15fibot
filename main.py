@@ -6,6 +6,7 @@ import datetime
 import os
 import psycopg2
 import urllib
+import time
 
 session = requests.session()
 
@@ -68,3 +69,4 @@ for i in range(0, len(table), 3):
         tw = prof + '研の希望者が減りました．\n' + '現在 ' + curt + '名 / ' + cap + '名'
         tweet(twitter, tw)
     conn.commit()
+    time.sleep(15)
