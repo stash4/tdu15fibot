@@ -67,3 +67,4 @@ for i in range(0, len(table), 3):
             (int(curt), prof,))
         tw = prof + '研の希望者が減りました．\n' + '現在 ' + curt + '名 / ' + cap + '名'
         tweet(tw)
+    conn.commit()
