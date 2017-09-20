@@ -34,14 +34,14 @@ conn = psycopg2.connect(
 
 cur = conn.cursor()
 
+twitter = OAuth1Session(
+    os.environ['CONSUMER_KEY'],
+    os.environ['CONSUMER_SECRET'],
+    os.environ['ACCESS_TOKEN'],
+    os.environ['ACCESS_TOKEN_SECRET'])
 
-def tweet(t):
-    twitter = OAuth1Session(
-        os.environ['CONSUMER_KEY'],
-        os.environ['CONSUMER_SECRET'],
-        os.environ['ACCESS_TOKEN'],
-        os.environ['ACCESS_TOKEN_SECRET'])
 
+def tweet(twitter, t):
     params = {'status': t}
     req = twitter.post(
         'https://api.twitter.com/1.1/statuses/update.json',
@@ -60,11 +60,11 @@ for i in range(0, len(table), 3):
             'UPDATE remain SET curt=%s WHERE prof=%s;',
             (int(curt), prof,))
         tw = prof + '研の希望者が増えました．\n' + '現在 ' + curt + '名 / ' + cap + '名'
-        tweet(tw)
+        tweet(twitter, tw)
     elif int(curt) < c:
         cur.execute(
             'UPDATE remain SET curt=%s WHERE prof=%s;',
             (int(curt), prof,))
         tw = prof + '研の希望者が減りました．\n' + '現在 ' + curt + '名 / ' + cap + '名'
-        tweet(tw)
+        tweet(twitter, tw)
     conn.commit()
