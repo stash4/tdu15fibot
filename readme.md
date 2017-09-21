@@ -2,7 +2,7 @@
 
 ## Description
 Herokuで動かすbot．  
-卒業研究配属希望登録サイト(https://www.mlab.im.dendai.ac.jp/bthesis2018/StudentDeploy.jsp)から各研究室の希望者数を取得し，ツイートする．
+[卒業研究配属希望登録サイト](https://www.mlab.im.dendai.ac.jp/bthesis2018/StudentDeploy.jsp)から各研究室の希望者数を取得し，ツイートする．
 
 ## Usage
 1. Herokuでapp作成
