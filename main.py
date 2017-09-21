@@ -62,7 +62,7 @@ for i in range(0, len(table), 3):
             'UPDATE remain SET curt=%s WHERE prof=%s;',
             (int(curt), prof,))
         d = int(curt) - c
-        tw = prof + '研の希望者が増えました．\n' + '現在 ' + curt + ' / ' + cap + '名 (+' + d + '名)'
+        tw = prof + '研の希望者が増えました．\n現在 ' + curt + ' / ' + cap + '名 (+' + str(d) + '名)'
         print(tw)
         tweet(twitter, tw)
     elif int(curt) < c:
@@ -70,7 +70,7 @@ for i in range(0, len(table), 3):
             'UPDATE remain SET curt=%s WHERE prof=%s;',
             (int(curt), prof,))
         d = c - int(curt)
-        tw = prof + '研の希望者が減りました．\n' + '現在 ' + curt + ' / ' + cap + '名 (-' + d + '名)'
+        tw = prof + '研の希望者が減りました．\n現在 ' + curt + ' / ' + cap + '名 (-' + str(d) + '名)'
         print(tw)
         tweet(twitter, tw)
     conn.commit()
