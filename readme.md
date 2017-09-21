@@ -1,4 +1,4 @@
-# 15FI 研究室配属希望bot
+# TDU 15FI 研究室配属希望bot
 
 ## Description
 Herokuで動かすbot．  
