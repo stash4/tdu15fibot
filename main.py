@@ -1,12 +1,10 @@
-import requests
 from bs4 import BeautifulSoup
-from urllib.parse import urljoin
 from requests_oauthlib import OAuth1Session
-import datetime
 import os
 import psycopg2
-import urllib
+import requests
 import time
+import urllib
 
 # 配属希望登録サイトへのログイン情報
 login_info = {
