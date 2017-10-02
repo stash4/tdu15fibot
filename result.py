@@ -1,6 +1,8 @@
 import os
 import psycopg2
 import time
+import urllib
+from requests_oauthlib import OAuth1Session
 from tweet import tweet
 from db import connect_db
 
