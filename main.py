@@ -1,10 +1,10 @@
-from bs4 import BeautifulSoup
-from requests_oauthlib import OAuth1Session
 import os
 import psycopg2
 import requests
 import time
 import urllib
+from bs4 import BeautifulSoup
+from requests_oauthlib import OAuth1Session
 from tweet import tweet
 from scraping import get_table
 
