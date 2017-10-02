@@ -12,7 +12,7 @@ from db import connect_db
 table = get_table()
 
 # db接続
-conn = connect_db
+conn = connect_db()
 cur = conn.cursor()
 
 # Twitter OAuth
