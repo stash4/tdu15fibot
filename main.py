@@ -5,6 +5,7 @@ import psycopg2
 import requests
 import time
 import urllib
+from tweet import tweet
 
 # 配属希望登録サイトへのログイン情報
 login_info = {
@@ -44,14 +45,6 @@ twitter = OAuth1Session(
     os.environ['ACCESS_TOKEN'],
     os.environ['ACCESS_TOKEN_SECRET'])
 
-
-# tの内容をツイート
-def tweet(twitter, t):
-    params = {'status': t}
-    req = twitter.post(
-        'https://api.twitter.com/1.1/statuses/update.json',
-        params=params)
-    return req
 
 # 各研究室ごとに処理
 for i in range(0, len(table), 3):
