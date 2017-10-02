@@ -7,22 +7,13 @@ from bs4 import BeautifulSoup
 from requests_oauthlib import OAuth1Session
 from tweet import tweet
 from scraping import get_table
+from db import connect_db
 
 table = get_table()
 
 # db接続
-urllib.parse.uses_netloc.append('postgres')
-url = urllib.parse.urlparse(os.environ['DATABASE_URL'])
-
-conn = psycopg2.connect(
-    database=url.path[1:],
-    user=url.username,
-    password=url.password,
-    host=url.hostname,
-    port=url.port)
-
+conn = connect_db
 cur = conn.cursor()
-
 
 # Twitter OAuth
 twitter = OAuth1Session(
