@@ -41,4 +41,5 @@ for i in range(16):
             tw += '(続く)'
 
         tweet(twitter, tw)
+        tw = ''
         time.sleep(15)
